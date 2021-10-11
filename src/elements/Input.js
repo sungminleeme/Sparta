@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Text, Grid } from "./index";
 
 const Input = (props) => {
-<<<<<<< HEAD
   const {
     label,
     placeholder,
@@ -14,9 +13,6 @@ const Input = (props) => {
     is_Submit,
     onSubmit,
   } = props;
-=======
-  const { label, placeholder, _onChange, type, multiLine, value, is_Submit, onSubmit } = props;
->>>>>>> f8a1bf2892e4031c5397865b46331314beb97e3e
 
   if (multiLine) {
     return (
@@ -42,13 +38,8 @@ const Input = (props) => {
             placeholder={placeholder}
             onChange={_onChange}
             value={value}
-<<<<<<< HEAD
             onKeyPress={(e) => {
               if (e.key === "Enter") {
-=======
-            onKeyPress={(e)=>{
-              if(e.key === "Enter"){
->>>>>>> f8a1bf2892e4031c5397865b46331314beb97e3e
                 onSubmit(e);
               }
             }}
