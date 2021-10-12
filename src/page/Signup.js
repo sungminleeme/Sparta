@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, Button, Form, Container } from "react-bootstrap";
 
-const SignUp = ({ show, onHide }) => {
+const Signup = ({ show, onHide }) => {
   return (
     <Modal
       show={show}
@@ -47,6 +47,7 @@ const SignUp = ({ show, onHide }) => {
           <Button block variant="info" type="button" className="my-3">
             회원가입
           </Button>
+          {/* 회원가입 버튼옆에 닫기버튼,필요없을꺼 같아서 일단 주석처리 */}
           {/* <Button onClick={onHide}>Close</Button> */}
         </Modal.Footer>
       </Container>
@@ -54,4 +55,4 @@ const SignUp = ({ show, onHide }) => {
   );
 };
 
-export default SignUp;
+export default Signup;
