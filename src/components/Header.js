@@ -16,7 +16,7 @@ const Header = () => {
             <Navbar.Brand>Home</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="float-right;">
+              <Nav className="float-right;" style={{float:"right"}}>
                 <Nav.Link>
                   <Button variant="primary" onClick={() => setSignInOn(true)}>
                     Sign In
