@@ -21,7 +21,7 @@ const Main = (props) => {
       <Layout>Header</Layout>
       <Calendar />
 
-      <Button is_float onClick={PlusBtn}>
+      <Button is_float _onClick={PlusBtn}>
         +
       </Button>
     </>
