@@ -2,12 +2,24 @@ import React from "react";
 import Calendar from "../components/Calendar";
 import styled from "styled-components";
 import Layout from "../components/Layout";
+import { Button } from "../elements/index";
+import { useHistory } from "react-router";
 
-const Main = () => {
+const Main = (props) => {
+  const history = useHistory();
+
+  function PlusBtn() {
+    history.push("/addgroup");
+    console.log("눌러지냐?");
+  }
+
   return (
     <>
       <Layout>Header</Layout>
       <Calendar />
+      <Button is_float onClick={PlusBtn}>
+        +
+      </Button>
     </>
   );
 };
