@@ -1,4 +1,3 @@
-import { BASE_OPTION_DEFAULTS } from "@fullcalendar/common";
 import React from "react";
 import styled from "styled-components";
 
