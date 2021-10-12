@@ -1,22 +1,20 @@
 import React from "react";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
-import interactionPlugin from '@fullcalendar/interaction';
+import interactionPlugin from "@fullcalendar/interaction";
 // import { useHistory } from "react-router";
 
 const Calendar = () => {
-
   const dayMaxEventRows = true;
-    const views = {
-      dayGrid: {
-          dayMaxEventRows: 3
-      }
-  }
+  const views = {
+    dayGrid: {
+      dayMaxEventRows: 3,
+    },
+  };
 
   // const addList = () => {
-  //   history.push('/add');
-  // }
-
+  //   history.push("/add");
+  // };
 
   const test = (e) => {
     console.log("click");
@@ -26,7 +24,6 @@ const Calendar = () => {
     <>
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
-        
         initialView="dayGridMonth"
         locale="ko"
         dayMaxEventRows={dayMaxEventRows}
@@ -80,7 +77,7 @@ const Calendar = () => {
             date: "2021-09-02",
             color: "red",
             textColor: "#000",
-          }
+          },
         ]}
         eventClick={test}
       />
@@ -90,7 +87,6 @@ const Calendar = () => {
 
 Calendar.defaultProps = {
   post_id: null,
-
-}
+};
 
 export default Calendar;
