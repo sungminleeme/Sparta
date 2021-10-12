@@ -1,10 +1,12 @@
 import React from "react";
 import Calendar from "../components/Calendar";
 import styled from "styled-components";
+import Layout from "../components/Layout";
 
 const Main = () => {
   return (
     <>
+      <Layout>Header</Layout>
       <Calendar />
     </>
   );
