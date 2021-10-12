@@ -1,11 +1,11 @@
 import React from "react";
 import { Modal, Button, Form, Container } from "react-bootstrap";
 
-const Signup = ({ show, onHide }) => {
+const Signup = (props) => {
   return (
     <Modal
-      show={show}
-      onHide={onHide}
+      show={props.show}
+      onHide={props.onHide}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered="centered"

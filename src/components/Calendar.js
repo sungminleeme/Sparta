@@ -5,20 +5,18 @@ import interactionPlugin from '@fullcalendar/interaction';
 // import { useHistory } from "react-router";
 
 const Calendar = () => {
-  // const handleEventClick = (clickInfo) => {
-  //   console.log(clickInfo.event.id)
-  // }
 
   const dayMaxEventRows = true;
     const views = {
       dayGrid: {
-          dayMaxEventRows: 4
+          dayMaxEventRows: 3
       }
   }
 
   // const addList = () => {
   //   history.push('/add');
   // }
+
 
   const test = (e) => {
     console.log("click");
@@ -28,9 +26,11 @@ const Calendar = () => {
     <>
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
+        
         initialView="dayGridMonth"
         locale="ko"
         dayMaxEventRows={dayMaxEventRows}
+        views={views}
         events={[
           {
             id: "1",
@@ -80,9 +80,8 @@ const Calendar = () => {
             date: "2021-09-02",
             color: "red",
             textColor: "#000",
-          },
+          }
         ]}
-        // eventClick={handleEventClick}
         eventClick={test}
       />
     </>

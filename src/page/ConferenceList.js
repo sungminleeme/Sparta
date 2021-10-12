@@ -1,11 +1,11 @@
 import React from "react";
 import { Modal, Button, Form, Container } from "react-bootstrap";
 
-const ConferenceList = ( show,onHide ) => {
+const ConferenceList = (props)=> {
     return (
         <Modal
-          show={show}
-          onHide={onHide}
+          show={props.show}
+          onHide={props.onHide}
           size="md"
           aria-labelledby="contained-modal-title-vcenter"
           centered="centered"
@@ -44,7 +44,7 @@ const ConferenceList = ( show,onHide ) => {
               </Form>
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={onHide}>Close</Button>
+              <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
           </Container>
         </Modal>

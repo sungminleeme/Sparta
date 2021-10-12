@@ -1,11 +1,11 @@
 import React from "react";
 import { Modal, Button, Form, Container } from "react-bootstrap";
 
-const ConferenceDetail = (show,onHide)=> {
+const ConferenceDetail = (props)=> {
     return (
         <Modal
-          show={show}
-          onHide={onHide}
+          show={props.show}
+          onHide={props.onHide}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered="centered"
@@ -13,7 +13,7 @@ const ConferenceDetail = (show,onHide)=> {
           alignItems: "center", justifyContent: "center",  
         }}
         >
-          <Container >
+          <Container>
             <Modal.Header>
               <Modal.Title id="contained-modal-title-vcenter">OO일 회의리스트</Modal.Title>
             </Modal.Header>
@@ -33,13 +33,15 @@ const ConferenceDetail = (show,onHide)=> {
                 </Form.Group>
                 <Form.Group style={{marginBottom: "16px"}}>
                     <Form.Label>결정 사항</Form.Label>
-                    <Form.Control type=""  placeholder="결정된 사항을 여기에 입력해주세요" />
+                    <Form.Control type=""  placeholder="그룹원이 자동으로 들어갈 예정" />
                 </Form.Group>
               </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button block variant="info" type="button" className="my-3">Save</Button>
-              <Button onClick={onHide}>Close</Button>
+                <Button block variant="info" type="button" className="my-3">
+                Save
+                </Button>
+              <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
           </Container>
         </Modal>
