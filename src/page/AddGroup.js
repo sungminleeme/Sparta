@@ -1,11 +1,16 @@
 import React from "react";
-import Grid from "../elements/Grid";
-import Button from "../elements/Button";
+
+import { Grid, Button, Text } from "../elements/index";
+
 
 const AddGroup = (props) => {
   return (
     <Grid>
+
       <Grid margin="50px 30px" padding="50px 300px">
+
+      <Grid>
+
         {/* input1 */}
         <div class="input-group mb-3">
           <div class="input-group-prepend">
@@ -22,9 +27,13 @@ const AddGroup = (props) => {
           />
         </div>
 
+
         {/* input2 */}
         <div class="input-group mb-3">
           <div class="input-group-prepend" style={{ width: "100px" }}>
+
+
+
             <label class="input-group-text" for="inputGroupSelect01">
               그룹원 선택
             </label>
@@ -35,6 +44,8 @@ const AddGroup = (props) => {
             <option value="2">사람2</option>
           </select>
         </div>
+
+
 
         {/* input3 */}
         <div class="input-group">
@@ -48,11 +59,17 @@ const AddGroup = (props) => {
           ></textarea>
         </div>
       </Grid>
+
       <Grid padding="0px 300px" is_flex>
         <Button width="200px" margin="100px">
           SUBMIT
         </Button>
         <Button width="200px">CANCEL</Button>
+
+      <Grid>
+        <Button>CANCEL</Button>
+        <Button>SUBMIT</Button>
+
       </Grid>
     </Grid>
   );

@@ -11,11 +11,17 @@ const Main = (props) => {
     history.push("/addgroup");
   };
 
+  function PlusBtn() {
+    history.push("/addgroup");
+    console.log("눌러지냐?");
+  }
+
   return (
     <>
       <Layout>Header</Layout>
       <Calendar />
-      <Button is_float _onClick={plusBtn}>
+
+      <Button is_float onClick={PlusBtn}>
         +
       </Button>
     </>
