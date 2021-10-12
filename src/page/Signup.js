@@ -11,37 +11,43 @@ const SignUp = ({ show, onHide }) => {
       centered="centered"
     >
       <Container>
-        <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">Sign Up</Modal.Title>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">회원가입</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group>
-              <Form.Label>Name</Form.Label>
-              <Form.Control placeholder="Enter your name" />
+              <Form.Label>이름</Form.Label>
+              <Form.Control placeholder="이름을 입력해주세요" />
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Label>이메일</Form.Label>
+              <Form.Control type="email" placeholder="이메일을 입력해주세요" />
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Label>비밀번호</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="비밀번호를 입력해주세요"
+              />
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control type="password" placeholder="Confirm Password" />
+              <Form.Label>비밀번호 확인</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="비밀번호를 다시 입력해주세요"
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button block variant="info" type="button" className="my-3">
-            Sign Up
+            회원가입
           </Button>
-          <Button onClick={onHide}>Close</Button>
+          {/* <Button onClick={onHide}>Close</Button> */}
         </Modal.Footer>
       </Container>
     </Modal>

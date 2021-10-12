@@ -11,27 +11,31 @@ const SignIn = ({ show, onHide }) => {
       centered="centered"
     >
       <Container>
-        <Modal.Header>
-          <Modal.Title id="contained-modal-title-vcenter">Sign In</Modal.Title>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">로그인</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Label>이메일</Form.Label>
+              <Form.Control type="email" placeholder="이메일을 입력해주세요" />
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Label>비밀번호</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="비밀번호를 입력해주세요"
+              />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button block variant="info" type="button" className="my-3">
-            Sign In
+            로그인
           </Button>
-          <Button onClick={onHide}>Close</Button>
+          {/* 로그인 버튼옆에 닫기버튼,필요없을꺼 같아서 일단 주석처리 */}
+          {/* <Button onClick={onHide}>Close</Button> */}
         </Modal.Footer>
       </Container>
     </Modal>

@@ -19,12 +19,12 @@ const Header = () => {
               <Nav className="float-right;">
                 <Nav.Link>
                   <Button variant="primary" onClick={() => setSignInOn(true)}>
-                    Sign In
+                    로그인
                   </Button>
                 </Nav.Link>
                 <Nav.Link>
                   <Button variant="secondary" onClick={() => setSignUpOn(true)}>
-                    Sign Up
+                    회원가입
                   </Button>
                 </Nav.Link>
               </Nav>
