@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Navbar, Nav, Button, Container } from "react-bootstrap";
-import SingUp from "../page/SignUp";
+import SignUp from "../page/SignUp";
+import SignIn from "../page/SignIn";
 
 const Header = () => {
   const [signUpOn, setSignUpOn] = useState(false);
-
+  const [signInOn, setSignInOn] = useState(false);
   return (
     <>
-      <SingUp show={signUpOn} onHide={() => setSignUpOn(false)} />
+      <SignUp show={signUpOn} onHide={() => setSignUpOn(false)} />
+      <SignIn show={signInOn} onHide={() => setSignInOn(false)} />
       <header>
         <Navbar bg="light" expand="lg">
           <Container>
@@ -16,7 +18,9 @@ const Header = () => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="float-right;">
                 <Nav.Link>
-                  <Button variant="primary">Sign In</Button>
+                  <Button variant="primary" onClick={() => setSignInOn(true)}>
+                    Sign In
+                  </Button>
                 </Nav.Link>
                 <Nav.Link>
                   <Button variant="secondary" onClick={() => setSignUpOn(true)}>
