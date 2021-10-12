@@ -7,9 +7,9 @@ import { useHistory } from "react-router";
 const Main = (props) => {
   const history = useHistory();
 
-  const plusBtn = () => {
-    history.push("/addgroup");
-  };
+  // const plusBtn = () => {
+  //   history.push("/addgroup");
+  // };
 
   function PlusBtn() {
     history.push("/addgroup");
