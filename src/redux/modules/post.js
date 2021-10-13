@@ -1,6 +1,6 @@
 import { createAction, handleActions } from 'redux-actions';
 import { produce } from 'immer';
-import { apis } from '../../lib/axios';
+import { apis } from "../../shared/axios";
 
 // action 생성
 const LOAD_POST = 'LOAD_POST';

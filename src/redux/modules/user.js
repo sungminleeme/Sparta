@@ -1,8 +1,8 @@
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
+import { setCookie, getCookie, deleteCookie } from "../../shared/Cookie";
 // import { apis } from "../../shared/axios";
 import { apis } from "../../shared/axios";
-import { setCookie, getCookie, deleteCookie } from "../../shared/Cookie";
 
 //actions (액션타입)
 const LOG_IN = "LOG_IN";
@@ -21,6 +21,7 @@ const initialState = {
 };
 
 // middleware actions
+
 const registerDB = (id, username, pwd, pwdcheck) => {
   return function (dispatch, getState, { history }) {
     console.log("react");
@@ -39,13 +40,32 @@ const registerDB = (id, username, pwd, pwdcheck) => {
       });
   };
 };
-const loginAction = (user) => {
+
+const loginDB = (id, pwd) => {
   return function (dispatch, getState, { history }) {
-    console.log(history);
-    dispatch(logIn(user));
-    history.push("/");
+    console.log("react");
+    console.log(apis);
+    apis
+      .signin(id, pwd)
+      .then((res) => {
+        console.log(res);
+        window.alert("환영합니다");
+        history.push("/");
+      })
+      .catch((err) => {
+        console.log("loginDB에서 오류발생", err);
+        window.alert("로그인에 실패했습니다.");
+      });
   };
 };
+
+// const loginAction = (user) => {
+//   return function (dispatch, getState, { history }) {
+//     console.log(history);
+//     dispatch(logIn(user));
+//     history.push("/");
+//   };
+// };
 
 // reducer
 export default handleActions(
@@ -69,11 +89,11 @@ export default handleActions(
 
 // action creator export
 const actionCreators = {
-  registerDB,
   logIn,
   logOut,
   getUser,
-  loginAction,
+  registerDB,
+  loginDB,
 };
 
 export { actionCreators };

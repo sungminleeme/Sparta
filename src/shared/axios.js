@@ -35,4 +35,10 @@ export const apis = {
       pwd: pwd,
       pwdcheck: pwdcheck,
     }),
+
+  signin: (id, pwd) =>
+    api.post("/signin", {
+      id: id,
+      pwd: pwd,
+    }),
 };

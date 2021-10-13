@@ -18,7 +18,9 @@ const SignIn = (props) => {
   };
 
   const signin = () => {
-    dispatch(userActions.loginAction({ username: "song" }));
+    // dispatch(userActions.loginAction({ username: "song" }));
+    console.log(id, pwd);
+    dispatch(userActions.loginDB(id, pwd));
   };
 
   return (
