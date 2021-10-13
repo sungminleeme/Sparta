@@ -9,9 +9,14 @@
       "id": 2,
       "title": "Redux로 비동기 처리는 어떻게 할까요?",
       "body": "redux-thunk를 사용해서 비동기 작업을 처리해봅시다!"
+    },
+    {
+      "id": "qqqq",
+      "username": "wwww",
+      "pwd": "eeee",
+      "pwdcheck": "rrrr"
     }
   ],
-
   "signin": [
     {
       "id": 1,
@@ -22,6 +27,10 @@
       "id": 2,
       "title": "Redux로 비동기 처리는 어떻게 할까요?",
       "body": "redux-thunk를 사용해서 비동기 작업을 처리해봅시다!"
+    },
+    {
+      "id": "qqqq",
+      "pwd": "wwww"
     }
   ]
 }
