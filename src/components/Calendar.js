@@ -2,9 +2,16 @@ import React from "react";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import interactionPlugin from "@fullcalendar/interaction";
-// import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 const Calendar = () => {
+  const history = useHistory();
+
+  function Can() {
+    history.push("/conferencedetail");
+    console.log("눌러라");
+  }
+
   const dayMaxEventRows = true;
   const views = {
     dayGrid: {
@@ -12,14 +19,6 @@ const Calendar = () => {
     },
   };
 
-  // const addList = () => {
-  //   history.push("/add");
-  // };
-
-  const test = (e) => {
-    console.log("click");
-    console.log(e.event._def);
-  };
   return (
     <>
       <FullCalendar
@@ -79,7 +78,7 @@ const Calendar = () => {
             textColor: "#000",
           },
         ]}
-        eventClick={test}
+        eventClick={Can}
       />
     </>
   );
