@@ -1,8 +1,12 @@
 import React from "react";
 import { Modal, Button, Form, Container } from "react-bootstrap";
 import { getCookie, setCookie, deleteCookie } from "../shared/Cookie";
+import {useDispatch} from "react-redux";
+import {actionCreators as userActions} from "../redux/modules/user"
 
 const SignIn = (props) => {
+  
+  const dispatch = useDispatch();
   const [id, setId] = React.useState("");
   const [pwd, setPwd] = React.useState("");
 
@@ -14,10 +18,10 @@ const SignIn = (props) => {
     setPwd(e.target.value);
   };
 
+
   const signin = () => {
-    setCookie("userid", id, 3);
-    setCookie("userpwd", pwd, 3);
-  };
+    dispatch(userActions.loginAction({username: "song"}));
+   };
 
   return (
     <Modal
