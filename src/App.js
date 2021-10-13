@@ -9,7 +9,8 @@ import {ConnectedRouter} from "connected-react-router";
 import {history} from "../src/redux/configureStore"
 
 import Main from "./page/Main";
-import Header from "../src/components/Header"
+import Header from "../src/components/Header";
+import TestAxios from "./page/TestAxios";
 
 function App(props) {
   return (
@@ -22,6 +23,7 @@ function App(props) {
         <Route path="/conferencelist" exact component={ConferenceList} />
         <Route path="/conferencedetail" exact component={ConferenceDetail} />
         <Route path="/addgroup" exact component={AddGroup} />
+        <Route path="/testaxios" exact component={TestAxios} />
         </Switch>
         </ConnectedRouter>
       
