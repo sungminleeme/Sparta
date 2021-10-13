@@ -18,9 +18,8 @@ const Header = (props) => {
   //   console.log(cookie);
 
   // });
-  
-  if(is_login) {
 
+  if (is_login) {
     return (
       <React.Fragment>
         <header>
@@ -29,14 +28,17 @@ const Header = (props) => {
               <Navbar.Brand>Home</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="float-right;" style={{float:"right"}}>
+                <Nav className="float-right;" style={{ float: "right" }}>
                   <Nav.Link>
-                    <Button variant="secondary" onClick={()=>{
-                      setSignUpOn(false);
-                      setSignInOn(false);
-                      dispatch(userActions.logOut({}));
-                      // deleteCookie("userid");
-                    }}>
+                    <Button
+                      variant="secondary"
+                      onClick={() => {
+                        setSignUpOn(false);
+                        setSignInOn(false);
+                        dispatch(userActions.logOut({}));
+                        // deleteCookie("userid");
+                      }}
+                    >
                       Sign Out
                     </Button>
                   </Nav.Link>
@@ -46,7 +48,7 @@ const Header = (props) => {
           </Navbar>
         </header>
       </React.Fragment>
-    )
+    );
   }
 
   return (
@@ -59,11 +61,14 @@ const Header = (props) => {
             <Navbar.Brand>Home</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="float-right;" style={{float:"right"}}>
+              <Nav className="float-right;" style={{ float: "right" }}>
                 <Nav.Link>
-                  <Button variant="primary" onClick={() => {
-                    setSignInOn(true);
-                  }}>
+                  <Button
+                    variant="primary"
+                    onClick={() => {
+                      setSignInOn(true);
+                    }}
+                  >
                     Sign In
                   </Button>
                 </Nav.Link>
@@ -81,6 +86,6 @@ const Header = (props) => {
   );
 };
 
-Header.defaultProps = {}
+Header.defaultProps = {};
 
 export default Header;
