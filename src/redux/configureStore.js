@@ -4,6 +4,7 @@ import { createBrowserHistory } from "history";
 import { connectRouter } from "connected-react-router";
 
 import User from "./modules/user";
+import post from './modules/post';
 
 // 리덕스에서 히스토리를 사용하게 해줘여
 export const history = createBrowserHistory();
@@ -11,6 +12,7 @@ export const history = createBrowserHistory();
 const rootReducer = combineReducers({
   user: User,
   router: connectRouter(history),
+  post,
 });
 
 const middlewares = [thunk.withExtraArgument({history:history})];

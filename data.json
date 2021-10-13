@@ -1,25 +1,2 @@
-{
-  "signup": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "id": "dddd",
-      "username": "dddd",
-      "pwd": "1234",
-      "pwdcheck": "1234"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
-}
+
+ 
