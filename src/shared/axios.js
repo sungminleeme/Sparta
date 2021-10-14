@@ -2,10 +2,11 @@ import axios from "axios";
 
 const api = axios.create({
   // 기본적으로 우리가 바라볼 서버의 주소≠registerDB
-  baseURL: "http://localhost:4000/",
+  baseURL: "http://3.35.174.4/",
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json",
+    "Access-Control-Allow-Origin": "*",
   },
 });
 
@@ -29,16 +30,20 @@ export const apis = {
   //   instance.post("/signup", id, username, pwd, pwdcheck),
   // user
   signup: (id, username, pwd, pwdcheck) =>
-    api.get("/signup", {
-      id: id,
-      username: username,
-      pwd: pwd,
-      pwdcheck: pwdcheck,
+    api.post("/user/signup", {
+      username: id,
+      nickname: username,
+      password: pwd,
     }),
 
   signin: (id, pwd) =>
-    api.get("/signin", {
-      id: id,
-      pwd: pwd,
+    api.post("/user/login", {
+      username: id,
+      password: pwd,
+    }),
+
+  userList: (id) =>
+    api.get("/user/list", {
+      username: id,
     }),
 };
