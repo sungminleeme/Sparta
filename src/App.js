@@ -15,8 +15,6 @@ import TestAxios from "./page/TestAxios";
 function App(props) {
   return (
     <>
-      
-        <Header></Header>
         <ConnectedRouter history={history}>
         <Switch>
         <Route path="/" exact component={Main} />

@@ -29,7 +29,7 @@ export const apis = {
   //   instance.post("/signup", id, username, pwd, pwdcheck),
   // user
   signup: (id, username, pwd, pwdcheck) =>
-    api.post("/signup", {
+    api.get("/signup", {
       id: id,
       username: username,
       pwd: pwd,
@@ -37,7 +37,7 @@ export const apis = {
     }),
 
   signin: (id, pwd) =>
-    api.post("/signin", {
+    api.get("/signin", {
       id: id,
       pwd: pwd,
     }),
