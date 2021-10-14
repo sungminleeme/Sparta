@@ -44,10 +44,10 @@ const registerDB = (id, username, pwd, pwdcheck) => {
 const loginDB = (id, pwd) => {
   return function (dispatch, getState, { history }) {
     console.log("react");
-    console.log(apis);
     apis
       .signin(id, pwd)
       .then((res) => {
+        dispatch(logIn(id));
         console.log(res);
         window.alert("환영합니다");
         history.push("/");
@@ -57,6 +57,15 @@ const loginDB = (id, pwd) => {
         window.alert("로그인에 실패했습니다.");
       });
   };
+};
+
+const logOutDB = () => {
+	return function (dispatch, getState, { history }) {
+		// deleteCookie('token');
+		localStorage.removeItem('id');
+		dispatch(logOut());
+		history.replace('/login');
+	};
 };
 
 // const loginAction = (user) => {
@@ -94,6 +103,7 @@ const actionCreators = {
   getUser,
   registerDB,
   loginDB,
+  logOutDB,
 };
 
 export { actionCreators };
