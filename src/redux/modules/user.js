@@ -13,6 +13,7 @@ const GET_USER = "GET_USER";
 const logIn = createAction(LOG_IN, (user) => ({ user }));
 const logOut = createAction(LOG_OUT, (user) => ({ user }));
 const getUser = createAction(GET_USER, (user) => ({ user }));
+const userList = createAction(LOG_IN, (user) => ({ user }));
 
 // initialState
 const initialState = {
@@ -60,14 +61,27 @@ const loginDB = (id, pwd) => {
 };
 
 const logOutDB = () => {
-	return function (dispatch, getState, { history }) {
-		// deleteCookie('token');
-		localStorage.removeItem('id');
-		dispatch(logOut());
-		history.replace('/login');
-	};
+  return function (dispatch, getState, { history }) {
+    // deleteCookie('token');
+    localStorage.removeItem("id");
+    dispatch(logOut());
+    history.replace("/login");
+  };
 };
 
+const userListDB = () => {
+  return function (dispatch, getState, { history }) {
+    apis
+      .userList()
+      .then((res) => {
+        dispatch(userList("id"));
+      })
+      .catch((err) => {
+        console.log("ListDB에서 오류발생", err);
+        window.alert("리스트 불러오기를 실패했습니다.");
+      });
+  };
+};
 // const loginAction = (user) => {
 //   return function (dispatch, getState, { history }) {
 //     console.log(history);
@@ -104,6 +118,7 @@ const actionCreators = {
   registerDB,
   loginDB,
   logOutDB,
+  userListDB,
 };
 
 export { actionCreators };

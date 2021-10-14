@@ -12,7 +12,7 @@ const Main = (props) => {
   // };
 
   function PlusBtn() {
-    history.push("/addgroup");
+    history.push("/conferenceDetail");
     console.log("눌러지냐?");
   }
 
