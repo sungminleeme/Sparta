@@ -4,9 +4,15 @@ import Layout from "../components/Layout";
 import { Button } from "../elements/index";
 import { useHistory } from "react-router";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { actionCreators as userActions } from "../redux/modules/user";
 
 const Main = (props) => {
   const history = useHistory();
+  const dispatch = useDispatch();
+  const 유저확인 = () => {
+    dispatch(userActions.유저확인DB());
+  };
 
   // const plusBtn = () => {
   //   history.push("/addgroup");
@@ -19,8 +25,10 @@ const Main = (props) => {
 
   return (
     <>
-      
-      <Layout></Layout>
+      <Layout>
+        <Button _onClick={() => 유저확인()}></Button>
+      </Layout>
+
       <Grid />
       <Calendar />
 
