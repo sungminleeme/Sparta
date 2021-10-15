@@ -8,16 +8,18 @@ import { apis } from "../../shared/axios";
 const LOG_IN = "LOG_IN";
 const LOG_OUT = "LOG_OUT";
 const GET_USER = "GET_USER";
+// const SET_USER = "SET_USER";
 
 // action creators
 const logIn = createAction(LOG_IN, (user) => ({ user }));
 const logOut = createAction(LOG_OUT, (user) => ({ user }));
 const getUser = createAction(GET_USER, (user) => ({ user }));
-const userList = createAction(LOG_IN, (user) => ({ user }));
+// const setUser = createAction(SET_USER, (data) => ({ data }));
 
 // initialState
 const initialState = {
   user: null,
+  token: null,
   is_login: false,
 };
 
@@ -49,6 +51,7 @@ const loginDB = (id, pwd) => {
       .signin(id, pwd)
       .then((res) => {
         setCookie("token", res.data.token);
+        localStorage.setItem("username", res.data.username);
         dispatch(logIn(id));
         console.log(res.data);
         console.log(res.data.token);
@@ -64,8 +67,8 @@ const loginDB = (id, pwd) => {
 
 const logOutDB = () => {
   return function (dispatch, getState, { history }) {
-    // deleteCookie('token');
-    localStorage.removeItem("id");
+    deleteCookie("token");
+    localStorage.removeItem("username");
     dispatch(logOut());
     history.replace("/");
   };
@@ -81,6 +84,17 @@ const 유저확인DB = () => {
   };
 };
 
+const loginCheckDB = () => {
+  return function (dispatch, getState, { history }) {
+    const userId = localStorage.getItem("username");
+    const tokenCheck = document.cookie;
+    if (tokenCheck) {
+      dispatch(logIn({ id: userId }));
+    } else {
+      dispatch(logOut());
+    }
+  };
+};
 // const loginCheckDB = () => {
 // 	return function (dispatch, getState, { history }) {
 // 		const userId = localStorage.getItem('username');
@@ -93,32 +107,32 @@ const 유저확인DB = () => {
 // 	};
 // };
 
-const userListDB = () => {
-  return function (dispatch, getState, { history }) {
-    apis
-      .userList()
-      .then((res) => {
-        dispatch(userList("id"));
-      })
-      .catch((err) => {
-        console.log("ListDB에서 오류발생", err);
-        window.alert("리스트 불러오기를 실패했습니다.");
-      });
-  };
-};
+// const userListDB = () => {
+//   return function (dispatch, getState, { history }) {
+//     apis
+//       .userList()
+//       .then((res) => {
+//         dispatch(userList("id"));
+//       })
+//       .catch((err) => {
+//         console.log("ListDB에서 오류발생", err);
+//         window.alert("리스트 불러오기를 실패했습니다.");
+//       });
+//   };
+// };
 
 // reducer
 export default handleActions(
   {
     [LOG_IN]: (state, action) =>
       produce(state, (draft) => {
-        setCookie("is_login", "success");
+        // setCookie("is_login", "success");
         draft.user = action.payload.user;
         draft.is_login = true;
       }),
     [LOG_OUT]: (state, action) =>
       produce(state, (draft) => {
-        deleteCookie("is_login");
+        // deleteCookie("token");
         draft.user = null;
         draft.is_login = false;
       }),
@@ -135,9 +149,9 @@ const actionCreators = {
   registerDB,
   loginDB,
   logOutDB,
-  userListDB,
+  // userListDB,
   유저확인DB,
-  // loginCheckDB,
+  loginCheckDB,
 };
 
 export { actionCreators };
