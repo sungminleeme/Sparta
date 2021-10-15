@@ -2,7 +2,6 @@ import React from "react";
 
 import { Route, Switch } from "react-router-dom";
 
-import AddGroup from "./page/AddGroup";
 import Conference from "./page/Conference";
 import ConferenceDetail from "./page/ConferenceDetail";
 import { ConnectedRouter } from "connected-react-router";
@@ -26,7 +25,6 @@ function App() {
           <Route path="/" exact component={Main} />
           <Route path="/conference" exact component={Conference} />
           <Route path="/conferencedetail" exact component={ConferenceDetail} />
-          <Route path="/addgroup" exact component={AddGroup} />
         </Switch>
       </ConnectedRouter>
     </div>

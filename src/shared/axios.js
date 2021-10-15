@@ -58,7 +58,7 @@ export const apis = {
   //     date: insertDt,
   //     contents: content,
   //   }),
-
+  
   // readmode
   getPost: () => instance.get('/conferenceDetail?conferenceId=1'),
   // create
