@@ -32,5 +32,23 @@
       "id": "qqqq",
       "pwd": "wwww"
     }
+  ],
+  "conferencedetail": [
+    {
+      "title": "aa",
+      "date": "2021-10-15T09:51",
+      "member": "ss",
+      "text": "dd",
+      "confirm": "ff",
+      "id": 1
+    },
+    {
+      "title": "ff",
+      "date": "2021-10-16T22:54",
+      "member": "ww",
+      "text": "ff",
+      "confirm": "ww",
+      "id": 2
+    }
   ]
 }

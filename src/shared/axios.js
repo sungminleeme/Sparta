@@ -1,12 +1,13 @@
 import axios from "axios";
 
-const api = axios.create({
+const instance = axios.create({
   // 기본적으로 우리가 바라볼 서버의 주소≠registerDB
-  baseURL: "http://3.35.174.4/",
+  // baseURL: "http://3.35.174.4/",
+  baseURL: "http://localhost:4000/",
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json",
-    "Access-Control-Allow-Origin": "*",
+  // "Access-Control-Allow-Origin": "*",
   },
 });
 
@@ -29,21 +30,33 @@ export const apis = {
   // creatUser: (id, username, pwd, pwdcheck) =>
   //   instance.post("/signup", id, username, pwd, pwdcheck),
   // user
-  signup: (id, username, pwd, pwdcheck) =>
-    api.post("/user/signup", {
-      username: id,
-      nickname: username,
-      password: pwd,
-    }),
 
-  signin: (id, pwd) =>
-    api.post("/user/login", {
-      username: id,
-      password: pwd,
-    }),
+  // signup: (id, username, pwd, pwdcheck) =>
+  //   api.post("/user/signup", {
+  //     username: id,
+  //     nickname: username,
+  //     password: pwd,
+  //   }),
 
-  userList: (id) =>
-    api.get("/user/list", {
-      username: id,
-    }),
+  // signin: (id, pwd) =>
+  //   api.post("/user/login", {
+  //     username: id,
+  //     password: pwd,
+  //   }),
+
+  // userList: (id) =>
+  //   api.get("/user/list", {
+  //     username: id,
+  //   }),
+
+  // addPost: (userId) =>
+  //   api.post("/conference", {
+  //     title: title,
+  //     date: insertDt,
+  //     contents: content, 
+  //   }),  
+
+  createPost: (content) => instance.post('/conferencedetail', content),
+  // edit: (id, contents) => instance.put(`api/articles/${id}`, contents),
+	// del: (id) => instance.delete(`api/articles/${id}`),
 };

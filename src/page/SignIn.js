@@ -43,7 +43,7 @@ const SignIn = (props) => {
                 value={id}
                 onChange={changeId}
                 type="id"
-                placeholder="아이디를 입력하세요"
+                placeholder="가입하신 이메일을 입력하세요"
               />
             </Form.Group>
 
