@@ -1,13 +1,16 @@
 import axios from "axios";
+import { getCookie } from "./Cookie";
 
 const instance = axios.create({
   // 기본적으로 우리가 바라볼 서버의 주소≠registerDB
-  // baseURL: "http://3.35.174.4/",
-  baseURL: "http://localhost:4000/",
+  baseURL: "http://3.35.174.4/",
+  // baseURL: "http://localhost:4000/",
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json",
-  // "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Origin": "*",
+    Authorization: `${getCookie("token")}`,
+    // { 'X-AUTH-TOKEN': getCookie('token') },
   },
 });
 
@@ -31,19 +34,19 @@ export const apis = {
   //   instance.post("/signup", id, username, pwd, pwdcheck),
   // user
 
-  // signup: (id, username, pwd, pwdcheck) =>
-  //   api.post("/user/signup", {
-  //     username: id,
-  //     nickname: username,
-  //     password: pwd,
-  //   }),
+  signup: (id, username, pwd, pwdcheck) =>
+    instance.post("/user/signup", {
+      username: id,
+      nickname: username,
+      password: pwd,
+    }),
 
-  // signin: (id, pwd) =>
-  //   api.post("/user/login", {
-  //     username: id,
-  //     password: pwd,
-  //   }),
-
+  signin: (id, pwd) =>
+    instance.post("/user/login", {
+      username: id,
+      password: pwd,
+    }),
+  유저확인: () => instance.get("/user"),
   // userList: (id) =>
   //   api.get("/user/list", {
   //     username: id,
@@ -53,10 +56,10 @@ export const apis = {
   //   api.post("/conference", {
   //     title: title,
   //     date: insertDt,
-  //     contents: content, 
-  //   }),  
+  //     contents: content,
+  //   }),
 
-  createPost: (content) => instance.post('/conferencedetail', content),
+  createPost: (content) => instance.post("/conferencedetail", content),
   // edit: (id, contents) => instance.put(`api/articles/${id}`, contents),
-	// del: (id) => instance.delete(`api/articles/${id}`),
+  // del: (id) => instance.delete(`api/articles/${id}`),
 };

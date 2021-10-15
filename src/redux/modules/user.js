@@ -48,7 +48,10 @@ const loginDB = (id, pwd) => {
     apis
       .signin(id, pwd)
       .then((res) => {
+        setCookie("token", res.data.token);
         dispatch(logIn(id));
+        console.log(res.data);
+        console.log(res.data.token);
         window.alert("환영합니다");
         history.replace("/");
       })
@@ -67,6 +70,16 @@ const logOutDB = () => {
     history.replace("/");
   };
 };
+const 유저확인DB = () => {
+  console.log("유저확인");
+  return function (dispatch, getState, { history }) {
+    // deleteCookie('token');
+    apis.유저확인().then((res) => {
+      console.log(res);
+      console.log(res.data);
+    });
+  };
+};
 
 // const loginCheckDB = () => {
 // 	return function (dispatch, getState, { history }) {
@@ -79,7 +92,6 @@ const logOutDB = () => {
 // 		}
 // 	};
 // };
-
 
 const userListDB = () => {
   return function (dispatch, getState, { history }) {
@@ -124,6 +136,7 @@ const actionCreators = {
   loginDB,
   logOutDB,
   userListDB,
+  유저확인DB,
   // loginCheckDB,
 };
 

@@ -19,7 +19,7 @@ const SignIn = (props) => {
 
   const signin = () => {
     // dispatch(userActions.loginAction({ username: "song" }));
-    console.log(id, pwd);
+    // console.log(id, pwd);
     dispatch(userActions.loginDB(id, pwd));
   };
 
@@ -65,7 +65,7 @@ const SignIn = (props) => {
             type="button"
             className="my-3"
             onClick={() => {
-              console.log("로그인 했어!");
+              // console.log("로그인 했어!");
               signin();
             }}
           >

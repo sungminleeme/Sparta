@@ -13,6 +13,10 @@ const Header = (props) => {
   const [signUpOn, setSignUpOn] = useState(false);
   const [signInOn, setSignInOn] = useState(false);
 
+  const 유저확인 = () => {
+    console.log("11");
+    dispatch(userActions.유저확인DB());
+  };
   // React.useEffect(() => {
   //   let cookie = getCookie("userid");
   //   console.log(cookie);
@@ -50,7 +54,7 @@ const Header = (props) => {
         </header>
       </React.Fragment>
     );
-  }else{
+  } else {
     return (
       <>
         <SignUp show={signUpOn} onHide={() => setSignUpOn(false)} />
@@ -71,9 +75,20 @@ const Header = (props) => {
                     >
                       Sign In
                     </Button>
+                    <Button
+                      variant="secondary"
+                      onClick={() => {
+                        유저확인();
+                      }}
+                    >
+                      유저확인
+                    </Button>
                   </Nav.Link>
                   <Nav.Link>
-                    <Button variant="secondary" onClick={() => setSignUpOn(true)}>
+                    <Button
+                      variant="secondary"
+                      onClick={() => setSignUpOn(true)}
+                    >
                       Sign Up
                     </Button>
                   </Nav.Link>
@@ -85,9 +100,6 @@ const Header = (props) => {
       </>
     );
   }
-
-  
 };
-
 
 export default Header;

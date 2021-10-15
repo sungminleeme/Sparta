@@ -1,10 +1,10 @@
-import { createAction, handleActions } from 'redux-actions';
-import { produce } from 'immer';
+import { createAction, handleActions } from "redux-actions";
+import { produce } from "immer";
 import { apis } from "../../shared/axios";
 
 // action 생성
-const LOAD_POST = 'LOAD_POST';
-const ADD_POST = 'ADD_POST';
+const LOAD_POST = "LOAD_POST";
+const ADD_POST = "ADD_POST";
 // const EDIT_POST = 'EDIT_POST';
 // const DEL_POST = 'DEL_POST';
 
@@ -36,14 +36,14 @@ const getPostMiddleware = () => {
 
 const addPostMiddleware = (post) => {
   return (dispatch) => {
-    console.log('addPost 미들웨어도착');
+    console.log("addPost 미들웨어도착");
     // 인자로 받은 post값이 명세서와 같아야한다. 매우중요!!
     console.log(post);
     apis
       .createPost(post)
       .then((res) => {
         console.log(res);
-        window.alert('addPost 통신')
+        window.alert("addPost 통신");
         dispatch(AddPost(post));
       })
       .catch((err) => {
@@ -51,7 +51,6 @@ const addPostMiddleware = (post) => {
       });
   };
 };
-
 
 // const editPostMiddleware = (post) => {
 //   return (dispatch) => {
@@ -70,16 +69,15 @@ const addPostMiddleware = (post) => {
 //   };
 // };
 
-
 const deletePostMiddleware = (post) => {
   return (dispatch) => {
-    console.log('addPost 미들웨어도착');
+    console.log("addPost 미들웨어도착");
     console.log(apis);
     apis
       .createPost(post)
       .then((res) => {
         console.log(res);
-        window.alert('addPost 통신')
+        window.alert("addPost 통신");
         dispatch(AddPost(post));
       })
       .catch((err) => {
@@ -87,8 +85,6 @@ const deletePostMiddleware = (post) => {
       });
   };
 };
-
-
 
 // reducer
 export default handleActions(
