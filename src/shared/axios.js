@@ -56,7 +56,10 @@ export const apis = {
   //     contents: content, 
   //   }),  
 
-  createPost: (content) => instance.post('/conferencedetail', content),
+  // readmode
+  getPost: () => instance.get('/conferenceDetail?conferenceId=1'),
+  // create
+  createPost: (content) => instance.post('/conference', content),
   // edit: (id, contents) => instance.put(`api/articles/${id}`, contents),
 	// del: (id) => instance.delete(`api/articles/${id}`),
 };

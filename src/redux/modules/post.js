@@ -20,12 +20,15 @@ const initialState = {
 };
 
 // middleware
-const getPostMiddleware = () => {
+const getPostMiddleware = (list) => {
   return (dispatch) => {
+    console.log('loadPost 미들웨어도착');
+    console.log(list);
     apis
       .getPost()
       .then((res) => {
         const post_list = res.data;
+        window.alert('loadPost 통신')
         dispatch(loadPost(post_list));
       })
       .catch((err) => {
@@ -52,7 +55,6 @@ const addPostMiddleware = (post) => {
   };
 };
 
-
 // const editPostMiddleware = (post) => {
 //   return (dispatch) => {
 //     console.log('editPost미들웨어도착');
@@ -70,25 +72,22 @@ const addPostMiddleware = (post) => {
 //   };
 // };
 
-
-const deletePostMiddleware = (post) => {
-  return (dispatch) => {
-    console.log('addPost 미들웨어도착');
-    console.log(apis);
-    apis
-      .createPost(post)
-      .then((res) => {
-        console.log(res);
-        window.alert('addPost 통신')
-        dispatch(AddPost(post));
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-};
-
-
+// const deletePostMiddleware = (post) => {
+//   return (dispatch) => {
+//     console.log('addPost 미들웨어도착');
+//     console.log(apis);
+//     apis
+//       .createPost(post)
+//       .then((res) => {
+//         console.log(res);
+//         window.alert('addPost 통신')
+//         dispatch(AddPost(post));
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//       });
+//   };
+// };
 
 // reducer
 export default handleActions(
@@ -105,10 +104,10 @@ export default handleActions(
   initialState
 );
 
-const postCreators = {
+const postActions = {
   getPostMiddleware,
   addPostMiddleware,
   // editPostMiddleware
 };
 
-export { postCreators };
+export { postActions };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal, Button, Form, Container } from "react-bootstrap";
 import { useHistory } from "react-router";
-import { postCreators } from '../redux/modules/post';
+import { postActions } from '../redux/modules/post';
 
 const ConferenceDetail = (props) => {
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const ConferenceDetail = (props) => {
 
   function CreatePost() {
     const content = {
+      id: post.length + 1,
       title,
       date: date,
       member: member,
@@ -33,33 +34,10 @@ const ConferenceDetail = (props) => {
       confirm: confirm,
     };
     console.log(content);
-    dispatch(postCreators.addPostMiddleware(content));
+    dispatch(postActions.addPostMiddleware(content));
   }
 
-  // const history = useHistory();
-  // function SaveB() {
-  //   history.goBack();
-  // }
-
-  // function DetilB() {
-  //   history.push("/");
-  //   console.log("눌리면 좋겠네");
-  // }
-
   return (
-    // <Modal
-    //   show={props.show}
-    //   onHide={props.onHide}
-    //   size="lg"
-    //   aria-labelledby="contained-modal-title-vcenter"
-    //   centered="centered"
-    //   style={{
-    //     width: "100vw",
-    //     display: "flex",
-    //     alignItems: "center",
-    //     justifyContent: "center",
-    //   }}
-    // >
     
     <Container>
       <Modal.Header>
@@ -69,9 +47,6 @@ const ConferenceDetail = (props) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <div>
-            <p>{title} {text} {member} {confirm} </p>
-          </div>
           <Form.Group style={{ marginBottom: "16px" }}>
             <Form.Label>회의 제목</Form.Label>
             <Form.Control type="text" placeholder="회의 제목을 입력해주세요" 
@@ -109,15 +84,12 @@ const ConferenceDetail = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <Button
-          // onClick={DetilB}
           block
           variant="info"
           type="button"
           className="my-3"
           onClick={CreatePost}
-        >
-          Save
-        </Button>
+        >Save</Button>
         <Button onClick={props.onHide}>Close</Button>
       </Modal.Footer>
     </Container>
