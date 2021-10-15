@@ -3,6 +3,7 @@ import Calendar from "../components/Calendar";
 import Layout from "../components/Layout";
 import { Button } from "../elements/index";
 import { useHistory } from "react-router";
+import styled from "styled-components";
 
 const Main = (props) => {
   const history = useHistory();
@@ -18,7 +19,9 @@ const Main = (props) => {
 
   return (
     <>
-      <Layout>Header</Layout>
+      
+      <Layout></Layout>
+      <Grid />
       <Calendar />
 
       <Button is_float _onClick={PlusBtn}>
@@ -28,12 +31,11 @@ const Main = (props) => {
   );
 };
 
-// const Container = styled.div`
-//   height: 100vh;
-//   width: 100vw;
-//   display: flex;
-//   align-items: center;
-//   flex-direction: column;
-// `;
+const Grid = styled.div`
+  height: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
 
 export default Main;

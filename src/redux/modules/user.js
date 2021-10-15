@@ -33,7 +33,7 @@ const registerDB = (id, username, pwd, pwdcheck) => {
       .then((res) => {
         console.log(res); // signup 정보 확인
         window.alert("축하합니다");
-        history.push("/");
+        history.replace("/");
       })
       .catch((err) => {
         console.log("signupDB에서 오류발생", err);
@@ -49,9 +49,8 @@ const loginDB = (id, pwd) => {
       .signin(id, pwd)
       .then((res) => {
         dispatch(logIn(id));
-        console.log(res);
         window.alert("환영합니다");
-        history.push("/");
+        history.replace("/");
       })
       .catch((err) => {
         console.log("loginDB에서 오류발생", err);
@@ -65,9 +64,22 @@ const logOutDB = () => {
     // deleteCookie('token');
     localStorage.removeItem("id");
     dispatch(logOut());
-    history.replace("/login");
+    history.replace("/");
   };
 };
+
+// const loginCheckDB = () => {
+// 	return function (dispatch, getState, { history }) {
+// 		const userId = localStorage.getItem('username');
+// 		const tokenCheck = document.cookie;
+// 		if (tokenCheck) {
+// 			dispatch(logIn({ id: userId }));
+// 		} else {
+// 			dispatch(logOut());
+// 		}
+// 	};
+// };
+
 
 const userListDB = () => {
   return function (dispatch, getState, { history }) {
@@ -82,13 +94,6 @@ const userListDB = () => {
       });
   };
 };
-// const loginAction = (user) => {
-//   return function (dispatch, getState, { history }) {
-//     console.log(history);
-//     dispatch(logIn(user));
-//     history.push("/");
-//   };
-// };
 
 // reducer
 export default handleActions(
@@ -119,6 +124,7 @@ const actionCreators = {
   loginDB,
   logOutDB,
   userListDB,
+  // loginCheckDB,
 };
 
 export { actionCreators };

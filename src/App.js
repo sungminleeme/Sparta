@@ -9,12 +9,11 @@ import {ConnectedRouter} from "connected-react-router";
 import {history} from "../src/redux/configureStore"
 
 import Main from "./page/Main";
-import Header from "../src/components/Header";
 import TestAxios from "./page/TestAxios";
 
-function App(props) {
+function App() {
   return (
-    <>
+    <div style={{padding: "0px 180px"}} >
         <ConnectedRouter history={history}>
         <Switch>
         <Route path="/" exact component={Main} />
@@ -24,8 +23,7 @@ function App(props) {
         <Route path="/testaxios" exact component={TestAxios} />
         </Switch>
         </ConnectedRouter>
-      
-    </>
+    </div>
   );
 }
 export default App;

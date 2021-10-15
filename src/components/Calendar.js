@@ -2,7 +2,9 @@ import React from "react";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import interactionPlugin from "@fullcalendar/interaction";
+
 import { useHistory } from "react-router-dom";
+
 
 const Calendar = () => {
   const history = useHistory();
@@ -15,12 +17,13 @@ const Calendar = () => {
   const dayMaxEventRows = true;
   const views = {
     dayGrid: {
-      dayMaxEventRows: 3,
+      dayMaxEventRows: 1,
     },
   };
 
   return (
     <>
+    <div style={{padding:"10px 0px 100px 0px"}}>
       <FullCalendar
         plugins={[dayGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
@@ -80,6 +83,7 @@ const Calendar = () => {
         ]}
         eventClick={Can}
       />
+      </div>
     </>
   );
 };
