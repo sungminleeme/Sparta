@@ -72,4 +72,5 @@ const instance = axios.create({
 
 ## API설계
 ###[전체 API설계](https://capable-thistle-ae7.notion.site/59b197d284c141f784ed4f878ffcc99c?v=0ba0d0b36e8b4ef58f066737005c051d)
+![스크린샷 2021-10-17 오전 1 54 41](https://user-images.githubusercontent.com/85213997/137596110-4cf27d92-0938-40d7-a99e-aeed0d03c5d5.png)
 
