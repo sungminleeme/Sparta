@@ -12,6 +12,7 @@
 ### 2. [팀원소개](#팀원소개)<br/>
 ### 3. [사용기술](#-tools)<br/>
 ### 4. [배운 점](#배운-점)<br/>
+### 5. [API설계](#API설계)<br/>
 
 
 
@@ -54,6 +55,7 @@
   
 - JWT토큰을 이용한 회원가입, 로그인 유지 구현
 - JWT를 쿠키 vs localstorage에 저장하는 방식의 장단점을 배울 수 있었다.
+- JWT토큰을 이용하여 매 통신 시마다 헤더에 토큰을 담아 보내 유효성 검증
 ```
 const instance = axios.create({
   //서버주소
@@ -66,3 +68,8 @@ const instance = axios.create({
   },
 });
 ```
+
+## API설계
+###[전체 API설계](https://capable-thistle-ae7.notion.site/59b197d284c141f784ed4f878ffcc99c?v=0ba0d0b36e8b4ef58f066737005c051d)
+## API설계
+
