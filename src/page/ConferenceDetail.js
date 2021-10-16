@@ -11,7 +11,7 @@ const ConferenceDetail = (props) => {
 
   // const aaaa = (e) => {
   //   console.log(e.target.value);
-  //   setDate(e.target.value);
+  //   setTitle(e.target.value);
   // }
 
   const [title, setTitle] = useState("");
@@ -22,10 +22,14 @@ const ConferenceDetail = (props) => {
 
   let dateTime = React.useRef();
 
-  function TextInput(e) {
+  function TextInputDate(e) {
     const originDate = e.target.value;
-    const formatDate = moment(originDate).format('YYYY-MM-DD hh-mm');
+    const formatDate = moment(originDate).format('YYYY-MM-DD hh:mm');
     setDate(formatDate);
+  }
+
+  function TextInput(e, setState){
+    setState(e.target.value);
   }
 
   // let changDate = { date };
@@ -54,12 +58,12 @@ const ConferenceDetail = (props) => {
   //   console.log("눌리면 좋겠네");
   // }
   
-  const [userList, setUserList] = useState([]);
-  const [name, setName] = useState("test");
+  // const [userList, setUserList] = useState([]);
+  // const [name, setName] = useState("test");
   
-  const handleOnClick = () => {
-    setUserList([...userList, { member: name}]);
-  };
+  // const handleOnClick = () => {
+  //   setUserList([...userList, { member: name}]);
+  // };
 
   return (
     <Container>
@@ -74,14 +78,16 @@ const ConferenceDetail = (props) => {
             <p>
               {title} {contents} {date} {member} {purpose}
             </p>
+
           </div>
-          <div>
+
+          {/* <div>
             <h1>여기에 테스트</h1>
             <ul>
               {userList && userList.map((ele, idx) => <li key={idx}>{ele.member}</li>)}
             </ul>
             <button onClick={handleOnClick}>클릭</button>
-          </div>
+          </div> */}
           <Form.Group style={{ marginBottom: "16px" }}>
             <Form.Label>회의 제목</Form.Label>
             <Form.Control
@@ -96,7 +102,7 @@ const ConferenceDetail = (props) => {
               style={{ marginLeft: "7px", border: "1px solid grey" }}
               type="datetime-local"
               ref={dateTime}
-              onChange={(e) => TextInput(e, setDate)}
+              onChange={(e) => TextInputDate(e, setDate)}
             />
           </Form.Group>
           <Form.Group style={{ marginBottom: "16px" }}>

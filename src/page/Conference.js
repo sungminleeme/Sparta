@@ -7,12 +7,12 @@ import { postActions } from "../redux/modules/post";
 const Conference = ({ history, match }) => {
   const dispatch = useDispatch();
 
-  const title = useSelector((store) => store.title.title);
-  const date = useSelector((store) => store.date.date);
-  const username = useSelector((store) => store.username.username);
-  const member = useSelector((store) => store.member.member);
-  const content = useSelector((store) => store.content.content);
-  const confirm = useSelector((store) => store.confirm.confirm);
+  const title = useSelector((store) => store.title);
+  const date = useSelector((store) => store.date);
+  const username = useSelector((store) => store.username);
+  const member = useSelector((store) => store.member);
+  const content = useSelector((store) => store.content);
+  const confirm = useSelector((store) => store.confirm);
 
   const {
 		params: { id },
@@ -44,7 +44,6 @@ const Conference = ({ history, match }) => {
             <Form.Group style={{ marginBottom: "16px" }}>
               <Form.Label>작성자 아이디 </Form.Label>
               {username}
-              {/* 부트스트랩에서 date 가져와서 형식에 맞게 date: "값맞춰주기" */}
             </Form.Group>
             <Form.Group style={{ marginBottom: "16px" }}>
               <Form.Label>작성날짜 </Form.Label>
