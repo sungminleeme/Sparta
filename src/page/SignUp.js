@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+import { apis } from "../shared/axios";
 import React from "react";
 import { Modal, Button, Form, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -11,6 +13,31 @@ const Signup = (props) => {
   const [username, setUserName] = React.useState("");
   const [pwd, setPwd] = React.useState("");
   const [pwdcheck, setPwdCheck] = React.useState("");
+  const [verified_id, setVerifiedId] = React.useState("");
+
+  const verificateId = () => {
+    const data = { email: id };
+    apis
+      .회원아이디중복체크(id, data)
+      .then((res) => {
+        console.log(id.data);
+        if (res.data.msg === "success") {
+          setVerifiedId(id);
+        } else {
+          Swal.fire({
+            text: "이미 가입된 이메일입니다.",
+            confirmButtonColor: "#E3344E",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        Swal.fire({
+          text: "잠시 후 다시 시도해주세요.",
+          confirmButtonColor: "rgb(118, 118, 118)",
+        });
+      });
+  };
 
   const changeId = (e) => {
     setId(e.target.value);
@@ -71,6 +98,29 @@ const Signup = (props) => {
                 onChange={changeId}
                 placeholder="이메일을 입력해주세요"
               />
+              <Button
+                padding=" 3.6px 0"
+                height="45px"
+                margin="0 0 10px 0"
+                onClick={() => {
+                  verificateId(id);
+                }}
+                disabled={!idCheck(id) ? true : false}
+              >
+                {verified_id && verified_id === id ? (
+                  <React.Fragment>
+                    사용
+                    <br />
+                    가능
+                  </React.Fragment>
+                ) : (
+                  <React.Fragment>
+                    중복
+                    <br />
+                    확인
+                  </React.Fragment>
+                )}
+              </Button>
             </Form.Group>
 
             <Form.Group>

@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { createAction, handleActions } from "redux-actions";
 import { produce } from "immer";
 import { setCookie, getCookie, deleteCookie } from "../../shared/Cookie";
@@ -19,7 +20,6 @@ const getUser = createAction(GET_USER, (user) => ({ user }));
 // initialState
 const initialState = {
   user: null,
-  token: null,
   is_login: false,
 };
 
@@ -34,7 +34,10 @@ const registerDB = (id, username, pwd, pwdcheck) => {
       .signup(id, username, pwd, pwdcheck)
       .then((res) => {
         console.log(res); // signup 정보 확인
-        window.alert("축하합니다");
+        Swal.fire({
+          text: "가입이 완료되었습니다!",
+          confirmButtonColor: "#E3344E",
+        });
         history.replace("/");
       })
       .catch((err) => {
@@ -46,16 +49,20 @@ const registerDB = (id, username, pwd, pwdcheck) => {
 
 const loginDB = (id, pwd) => {
   return function (dispatch, getState, { history }) {
-    console.log("react");
+    // console.log("react");
     apis
       .signin(id, pwd)
       .then((res) => {
         setCookie("token", res.data.token);
         localStorage.setItem("username", res.data.username);
         dispatch(logIn(id));
-        console.log(res.data);
+        console.log(id);
+        // console.log(res.data);
         console.log(res.data.token);
-        window.alert("환영합니다");
+        Swal.fire({
+          text: "가입이 완료되었습니다!",
+          confirmButtonColor: "#E3344E",
+        });
         history.replace("/");
       })
       .catch((err) => {

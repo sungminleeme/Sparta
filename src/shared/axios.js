@@ -2,15 +2,13 @@ import axios from "axios";
 import { getCookie } from "./Cookie";
 
 const instance = axios.create({
-  // 기본적으로 우리가 바라볼 서버의 주소≠registerDB
+  //서버주소
   baseURL: "http://3.35.174.4/",
-  // baseURL: "http://localhost:4000/",
   headers: {
     "content-type": "application/json;charset=UTF-8",
     accept: "application/json",
     "Access-Control-Allow-Origin": "*",
     Authorization: `${getCookie("token")}`,
-    // { 'X-AUTH-TOKEN': getCookie('token') },
   },
 });
 
@@ -47,6 +45,8 @@ export const apis = {
       password: pwd,
     }),
   유저확인: () => instance.get("/user"),
+
+  회원아이디중복체크: (id, data) => instance.post("/user/email", id, data),
   // userList: (id) =>
   //   api.get("/user/list", {
   //     username: id,
