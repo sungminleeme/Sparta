@@ -22,13 +22,13 @@ const initialState = {
 // middleware
 const getPostMiddleware = (list) => {
   return (dispatch) => {
-    console.log('loadPost 미들웨어도착');
+    console.log("loadPost 미들웨어도착");
     console.log(list);
     apis
       .getPost()
       .then((res) => {
         const post_list = res.data;
-        window.alert('loadPost 통신')
+        window.alert("loadPost 통신");
         dispatch(loadPost(post_list));
       })
       .catch((err) => {
@@ -72,6 +72,14 @@ const addPostMiddleware = (post) => {
 //   };
 // };
 
+export const delPost =
+  (conferenceId) =>
+  async (dispatch, getState, { history }) => {
+    try {
+      await apis.del(conferenceId);
+      history.replace("/");
+    } catch (e) {}
+  };
 
 // const deletePostMiddleware = (post) => {
 //   return (dispatch) => {
@@ -89,7 +97,6 @@ const addPostMiddleware = (post) => {
 //       });
 //   };
 // };
-
 
 // reducer
 export default handleActions(

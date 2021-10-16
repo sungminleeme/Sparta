@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, Button, Form, Container } from "react-bootstrap";
 import { useHistory } from "react-router";
-import { postActions } from "../redux/modules/post";
+import { postActions, delPost } from "../redux/modules/post";
 
 const Conference = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -15,13 +15,12 @@ const Conference = ({ history, match }) => {
   const confirm = useSelector((store) => store.confirm);
 
   const {
-		params: { id },
-	} = match;
+    params: { id },
+  } = match;
 
   useEffect(() => {
     dispatch(postActions.getPostMiddleware());
   }, []);
-
 
   return (
     <div key={id}>
@@ -35,10 +34,7 @@ const Conference = ({ history, match }) => {
           <Form>
             <Form.Group style={{ marginBottom: "16px" }}>
               <Form.Label>회의 제목</Form.Label>
-              <Form.Control
-                type="text"
-                readOnly
-              />
+              <Form.Control type="text" readOnly />
               {title}
             </Form.Group>
             <Form.Group style={{ marginBottom: "16px" }}>
@@ -51,27 +47,18 @@ const Conference = ({ history, match }) => {
             </Form.Group>
             <Form.Group style={{ marginBottom: "16px" }}>
               <Form.Label>회의 참석자</Form.Label>
-              <Form.Control
-                type=""
-                readOnly
-              />
+              <Form.Control type="" readOnly />
               {member}
             </Form.Group>
             <Form.Group style={{ marginBottom: "16px" }}>
               <Form.Label>회의 내용</Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={16}
-                readOnly
-              />
+              <Form.Control as="textarea" rows={16} readOnly />
               {content}
             </Form.Group>
             <Form.Group style={{ marginBottom: "16px" }}>
               <Form.Label>결정 사항</Form.Label>
-              <Form.Control
-                type=""
-                readOnly
-              />{confirm}
+              <Form.Control type="" readOnly />
+              {confirm}
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -79,16 +66,30 @@ const Conference = ({ history, match }) => {
           <Button block variant="info" type="button" className="my-3">
             Edit
           </Button>
-          <Button block variant="info" type="button" className="my-3">
+          <Button
+            block
+            variant="info"
+            type="button"
+            className="my-3"
+            onClick={() => {
+              const result = window.confirm("삭제를 하시겠습니까?");
+              if (result) {
+                dispatch(delPost(id));
+              }
+            }}
+          >
             Delete
           </Button>
-          <Button onClick={()=>{
-            history.replace('/');
-          }}>Close</Button>
+          <Button
+            onClick={() => {
+              history.replace("/");
+            }}
+          >
+            Close
+          </Button>
         </Modal.Footer>
       </Container>
     </div>
-    
   );
 };
 
