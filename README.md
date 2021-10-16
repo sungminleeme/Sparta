@@ -51,7 +51,8 @@
 
 ## 배운 점
 
-- API의 중요성
+- API의 중요성: 프론트와 백으로 나눠서 처음으로 API를 설계해보았다. 이해가 안되는 부분이이었는데 그냥 넘어 갔더니 결국 나중에 수정해야는 상황이 왔다.
+세세한것 하나까지 서로 커뮤니케이션을 해서  짚고 넘어가야 한다는 것을 배웠다.
   
 - JWT토큰을 이용한 회원가입, 로그인 유지 구현
 - JWT를 쿠키 vs localstorage에 저장하는 방식의 장단점을 배울 수 있었다.
@@ -71,5 +72,4 @@ const instance = axios.create({
 
 ## API설계
 ###[전체 API설계](https://capable-thistle-ae7.notion.site/59b197d284c141f784ed4f878ffcc99c?v=0ba0d0b36e8b4ef58f066737005c051d)
-## API설계
 
