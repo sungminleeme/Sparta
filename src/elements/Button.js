@@ -60,17 +60,17 @@ const ElButton = styled.button`
 `;
 
 const FloatButton = styled.button`
-  width: 50px;
-  height: 50px;
-  background-color: #212121;
+  width: 70px;
+  height: 70px;
+  background-color: #78C2AD;
   color: #fff;
-  padding: 16px;
+  padding: 0px;
   box-size: border-box;
-  font-size: 36px;
+  font-size: 55px;
   font-weight: 800;
   position: fixed;
   bottom: 50px;
-  right: 16px;
+  right: 46px;
   text-align: center;
   border: none;
   border-radius: 50px;

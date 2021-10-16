@@ -74,12 +74,11 @@ const ConferenceDetail = (props) => {
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <div>
+          {/* <div>
             <p>
               {title} {contents} {date} {member} {purpose}
             </p>
-
-          </div>
+          </div> */}
 
           {/* <div>
             <h1>여기에 테스트</h1>
