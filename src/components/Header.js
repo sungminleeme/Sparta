@@ -4,8 +4,10 @@ import SignUp from "../page/SignUp";
 import SignIn from "../page/SignIn";
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
+import { useHistory } from "react-router";
 
 const Header = (props) => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const is_login = useSelector((state) => state.user.is_login);
   // const is_token = document.cookie;
@@ -30,12 +32,14 @@ const Header = (props) => {
         <header>
           <Navbar bg="light" expand="lg">
             <Container>
-              <Navbar.Brand>Home</Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Brand style={{fontWeight:"bold", marginRight:"calc(90% - 150px)"}} >
+               Task Calender</Navbar.Brand>
+              {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="float-right;" style={{ float: "right" }}>
+                <Nav className="float-right;">
                   <Nav.Link>
                     <Button
+                      className=" mr-sm-2"
                       variant="secondary"
                       onClick={() => {
                         setSignUpOn(false);
@@ -46,14 +50,14 @@ const Header = (props) => {
                     >
                       Sign Out
                     </Button>
-                    <Button
+                    {/* <Button
                       variant="secondary"
                       onClick={() => {
                         유저확인();
                       }}
                     >
                       유저확인
-                    </Button>
+                    </Button> */}
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>
@@ -70,7 +74,7 @@ const Header = (props) => {
       <header>
         <Navbar bg="light" expand="lg">
           <Container>
-            <Navbar.Brand>Home</Navbar.Brand>
+            <Navbar.Brand style={{fontWeight:"bold", marginRight:"calc(90% - 150px)"}}>Home</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="float-right;" style={{ float: "right" }}>
@@ -83,14 +87,14 @@ const Header = (props) => {
                   >
                     Sign In
                   </Button>
-                  <Button
+                  {/* <Button
                     variant="secondary"
                     onClick={() => {
                       유저확인();
                     }}
                   >
                     유저확인
-                  </Button>
+                  </Button> */}
                 </Nav.Link>
                 <Nav.Link>
                   <Button variant="secondary" onClick={() => setSignUpOn(true)}>

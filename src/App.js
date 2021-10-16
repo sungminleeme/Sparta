@@ -23,7 +23,7 @@ function App() {
       <ConnectedRouter history={history}>
         <Switch>
           <Route path="/" exact component={Main} />
-          <Route path="/conference" exact component={Conference} />
+          <Route path="/conference/:id" exact component={Conference} />
           <Route path="/conferencedetail" exact component={ConferenceDetail} />
         </Switch>
       </ConnectedRouter>

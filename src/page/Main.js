@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import { Button } from "../elements/index";
 import { useHistory } from "react-router";
 import styled from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
 
 const Main = (props) => {
@@ -20,7 +20,6 @@ const Main = (props) => {
 
   function PlusBtn() {
     history.push("/conferenceDetail");
-    console.log("눌러지냐?");
   }
 
   return (
@@ -33,7 +32,7 @@ const Main = (props) => {
       <Calendar />
 
       <Button is_float _onClick={PlusBtn}>
-        +
+        <span style={{padding: "-20px"}}>+</span>
       </Button>
     </>
   );

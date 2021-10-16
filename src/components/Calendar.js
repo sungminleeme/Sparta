@@ -10,7 +10,7 @@ const Calendar = (props) => {
   const history = useHistory();
 
   function Can() {
-    history.push("/conferencedetail");
+    history.push("/conference");
     console.log("눌러라");
   }
 
