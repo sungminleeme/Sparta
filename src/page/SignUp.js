@@ -2,6 +2,7 @@ import React from "react";
 import { Modal, Button, Form, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { actionCreators as userActions } from "../redux/modules/user";
+import { idCheck, pwCheck } from "../shared/regExp";
 
 const Signup = (props) => {
   const dispatch = useDispatch();
@@ -28,6 +29,23 @@ const Signup = (props) => {
 
   const signup = () => {
     // console.log(id, username, pwd, pwdcheck);
+
+    if (id === "" || pwd === "" || username === "") {
+      window.alert("아이디, 패스워드, 닉네임을 모두 입력해주세요!");
+      return;
+    }
+    if (!idCheck(id)) {
+      window.alert("이메일 형식이 맞지 않습니다!");
+      return;
+    }
+    if (pwd !== pwdcheck) {
+      window.alert("패스워드와 패스워드 확인이 일치하지 않습니다!");
+      return;
+    }
+    if (!pwCheck(pwd)) {
+      window.alert("비밀번호 형식을 확인해주세요!!");
+      return;
+    }
     dispatch(userActions.registerDB(id, username, pwd, pwdcheck));
   };
 
@@ -70,7 +88,7 @@ const Signup = (props) => {
                 value={pwd}
                 type="password"
                 onChange={changePwd}
-                placeholder="비밀번호를 입력해주세요"
+                placeholder="비밀번호를 입력해주세요(문자,숫자,특수문자포함 4~10자)"
               />
             </Form.Group>
 
