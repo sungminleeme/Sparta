@@ -49,3 +49,20 @@
 
 
 ## 배운 점
+
+- API의 중요성
+  
+- JWT토큰을 이용한 회원가입, 로그인 유지 구현
+- JWT를 쿠키 vs localstorage에 저장하는 방식의 장단점을 배울 수 있었다.
+```
+const instance = axios.create({
+  //서버주소
+  baseURL: "http://3.35.174.4/",
+  headers: {
+    "content-type": "application/json;charset=UTF-8",
+    accept: "application/json",
+    "Access-Control-Allow-Origin": "*",
+    Authorization: `${getCookie("token")}`,
+  },
+});
+```
