@@ -129,6 +129,7 @@ const Signup = (props) => {
           <Form>
             <Form.Group>
               <Form.Label>아이디</Form.Label>
+
               <Form.Control
                 value={id}
                 type="id"
@@ -136,23 +137,21 @@ const Signup = (props) => {
                 placeholder="이메일을 입력해주세요"
               />
               <Button
+                style={{
+                  float: "right",
+                  position: "relative",
+                  top: "-40px",
+                  zIndex: 3,
+                }}
                 onClick={() => {
                   verificateId(id);
                 }}
                 disabled={!idCheck(id) ? true : false}
               >
                 {verified_id && verified_id === id ? (
-                  <React.Fragment>
-                    사용
-                    <br />
-                    가능
-                  </React.Fragment>
+                  <React.Fragment>사용 가능</React.Fragment>
                 ) : (
-                  <React.Fragment>
-                    중복
-                    <br />
-                    확인
-                  </React.Fragment>
+                  <React.Fragment>중복 확인</React.Fragment>
                 )}
               </Button>
             </Form.Group>
@@ -166,21 +165,19 @@ const Signup = (props) => {
               />
             </Form.Group>
             <Button
+              style={{
+                float: "right",
+                position: "relative",
+                top: "-40px",
+                zIndex: 3,
+              }}
               onClick={verificateNick}
-              disabled={username.length < 5 ? true : false}
+              disabled={username.length < 1 ? true : false}
             >
               {verified_nick && verified_nick === username ? (
-                <React.Fragment>
-                  사용
-                  <br />
-                  가능
-                </React.Fragment>
+                <React.Fragment>사용 가능</React.Fragment>
               ) : (
-                <React.Fragment>
-                  중복
-                  <br />
-                  확인
-                </React.Fragment>
+                <React.Fragment>중복 확인</React.Fragment>
               )}
             </Button>
 
