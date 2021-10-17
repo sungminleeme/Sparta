@@ -47,10 +47,8 @@ export const apis = {
   유저확인: () => instance.get("/user"),
 
   회원아이디중복체크: (id, data) => instance.post("/user/email", id, data),
-  // userList: (id) =>
-  //   api.get("/user/list", {
-  //     username: id,
-  //   }),
+  닉네임중복체크: (username, data) =>
+    instance.post("/user/nickname", username, data),
 
   // addPost: (userId) =>
   //   api.post("/conference", {

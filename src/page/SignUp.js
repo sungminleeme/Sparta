@@ -14,18 +14,42 @@ const Signup = (props) => {
   const [pwd, setPwd] = React.useState("");
   const [pwdcheck, setPwdCheck] = React.useState("");
   const [verified_id, setVerifiedId] = React.useState("");
+  const [verified_nick, setVerifiedNick] = React.useState("");
 
   const verificateId = () => {
     const data = { email: id };
     apis
       .회원아이디중복체크(id, data)
       .then((res) => {
-        console.log(id.data);
-        if (res.data.msg === "success") {
+        console.log(res);
+        if (res.data.statusCode === 200) {
           setVerifiedId(id);
         } else {
           Swal.fire({
             text: "이미 가입된 이메일입니다.",
+            confirmButtonColor: "#E3344E",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        Swal.fire({
+          text: "잠시 후 다시 시도해주세요.",
+          confirmButtonColor: "rgb(118, 118, 118)",
+        });
+      });
+  };
+  const verificateNick = () => {
+    const data = { ncikename: username };
+    apis
+      .닉네임중복체크(username, data)
+      .then((res) => {
+        console.log(res);
+        if (res.data.statusCode === 200) {
+          setVerifiedNick(username);
+        } else {
+          Swal.fire({
+            text: "이미 가입된 닉네임입니다.",
             confirmButtonColor: "#E3344E",
           });
         }
@@ -58,19 +82,32 @@ const Signup = (props) => {
     // console.log(id, username, pwd, pwdcheck);
 
     if (id === "" || pwd === "" || username === "") {
-      window.alert("아이디, 패스워드, 닉네임을 모두 입력해주세요!");
+      Swal.fire({
+        text: "아이디와 닉네임 패스워드를 모두 입력해주세요!",
+        confirmButtonColor: "#E3344E",
+      });
       return;
     }
     if (!idCheck(id)) {
-      window.alert("이메일 형식이 맞지 않습니다!");
+      Swal.fire({
+        text: "이메일 형식이 맞지 않습니다!",
+        confirmButtonColor: "#E3344E",
+      });
       return;
     }
     if (pwd !== pwdcheck) {
-      window.alert("패스워드와 패스워드 확인이 일치하지 않습니다!");
+      Swal.fire({
+        text: "패스워드와 패스워드 확인이 일치하지 않습니다!",
+        confirmButtonColor: "#E3344E",
+      });
       return;
     }
+
     if (!pwCheck(pwd)) {
-      window.alert("비밀번호 형식을 확인해주세요!!");
+      Swal.fire({
+        text: "비밀번호 형식을 확인해주세요!!",
+        cancelButtonColor: "#E3344E",
+      });
       return;
     }
     dispatch(userActions.registerDB(id, username, pwd, pwdcheck));
@@ -99,9 +136,6 @@ const Signup = (props) => {
                 placeholder="이메일을 입력해주세요"
               />
               <Button
-                padding=" 3.6px 0"
-                height="45px"
-                margin="0 0 10px 0"
                 onClick={() => {
                   verificateId(id);
                 }}
@@ -131,6 +165,24 @@ const Signup = (props) => {
                 placeholder="이름을 입력해주세요"
               />
             </Form.Group>
+            <Button
+              onClick={verificateNick}
+              disabled={username.length < 5 ? true : false}
+            >
+              {verified_nick && verified_nick === username ? (
+                <React.Fragment>
+                  사용
+                  <br />
+                  가능
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  중복
+                  <br />
+                  확인
+                </React.Fragment>
+              )}
+            </Button>
 
             <Form.Group>
               <Form.Label>비밀번호</Form.Label>
