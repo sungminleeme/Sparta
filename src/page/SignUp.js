@@ -110,7 +110,21 @@ const Signup = (props) => {
       });
       return;
     }
-    dispatch(userActions.registerDB(id, username, pwd, pwdcheck));
+    if (id !== verified_id) {
+      Swal.fire({
+        text: "이메일 중복확인이 필요합니다.",
+        confirmButtonColor: "#E3344E",
+      });
+    } else if (username !== verified_nick) {
+      Swal.fire({
+        text: "닉네임 중복확인이 필요합니다.",
+        confirmButtonColor: "#E3344E",
+      });
+    } else {
+      dispatch(
+        userActions.registerDB(verified_id, pwd, pwdcheck, verified_nick)
+      );
+    }
   };
 
   return (
@@ -140,7 +154,7 @@ const Signup = (props) => {
                 style={{
                   float: "right",
                   position: "relative",
-                  top: "-40px",
+                  top: "-39px",
                   zIndex: 3,
                 }}
                 onClick={() => {
@@ -168,7 +182,7 @@ const Signup = (props) => {
               style={{
                 float: "right",
                 position: "relative",
-                top: "-40px",
+                top: "-39px",
                 zIndex: 3,
               }}
               onClick={verificateNick}

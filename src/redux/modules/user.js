@@ -60,7 +60,7 @@ const loginDB = (id, pwd) => {
         // console.log(res.data);
         console.log(res.data.token);
         Swal.fire({
-          text: "가입이 완료되었습니다!",
+          text: "환영합니다!",
           confirmButtonColor: "#E3344E",
         });
         history.replace("/");
